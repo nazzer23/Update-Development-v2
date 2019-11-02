@@ -29,36 +29,29 @@ $(document).ready(function () {
             cache: false,
             success: function (data) {
                 if (data == '') {
-                    $('#load_posts_message').html('<div class="p-3 bg-white rounded box-shadow"><center><h6>End of timeline</h6></center></div>');
-                    //$('#load_posts_message').html('<div class="my-3 p-3 bg-white rounded box-shadow"><center><h6>No more posts could be loaded</h6></center></div>');
+                    $('#load_posts_message').html('<div class="p-3 rounded box-shadow darkPost"><center><h6>End of timeline</h6></center></div>');
                     action = 'active';
                 } else {
-                    //$('#load_posts_message').html("");
                     if (!isJson(data)) {
-                        $('#load_posts_message').html('<div class="p-3 bg-white rounded box-shadow"><center><h6>There was an error.</h6></center></div>');
+                        $('#load_posts_message').html('<div class="p-3 rounded box-shadow darkPost"><center><h6>There was an error.</h6></center></div>');
                         action = "active";
                     } else {
-                        console.log(data.length);
-
-                        for (var i = 0; i < data.length; i++) {
-                            console.log(data[i]);
-
+                        for (let i = 0; i < data.length; i++) {
                             $.ajax({
                                 url: "/gateway.php",
                                 method: "POST",
                                 context: this,
-                                dataType: "json",
+                                dataType: "html",
                                 data: {
                                     mode: "constructPost",
                                     userID: localStorage.getItem("userID"),
                                     token: localStorage.getItem("token"),
                                     postID: data[i].PostID
                                 },
-                                success: (data) => {
-                                    $('#load_posts_message').append(data);
+                                success: (post) => {
+                                    $('#load_posts').append($(post));
                                 }
                             });
-
                         }
 
                         action = "inactive";

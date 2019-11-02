@@ -35,6 +35,19 @@ class Functions
         }
     }
 
+    public function VerifyUserSessionOnToken($userID, $sessionString) {
+        if(isset($userID) && isset($sessionString)) {
+            // Validate User Session
+            if($this->database->getNumberOfRows("SELECT * FROM users_sessions WHERE SessionString='{$sessionString}' AND UserID='{$userID}' AND Valid=1") > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public function getUserDataForCurrentUser() {
         if(!isset($_SESSION['userID'])) {
             return false;
@@ -58,5 +71,10 @@ class Functions
         } else {
             return false;
         }
+    }
+
+    public function getDateFormat($date) {
+        $databaseTime = strtotime($date);
+        return date("l jS F Y g:ia", $databaseTime);
     }
 }

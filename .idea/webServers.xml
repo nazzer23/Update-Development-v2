@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="642734a4-2bb8-40ac-a78f-66030e938158" name="UpdateSocial_Dev" url="http://dev.updatesocial.co.uk">
+        <fileTransfer host="207.180.239.185" port="21" rootFolder="/UpdateSocial/dev">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
