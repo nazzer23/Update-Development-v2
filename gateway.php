@@ -65,7 +65,7 @@ function constructPost() {
                 $postTemplate->setVariable("profileNameFirst", $row['FirstName']);
                 $postTemplate->setVariable("profileNameLast", $row['LastName']);
                 $postTemplate->setVariable("profileID", $row['UserID']);
-                $postTemplate->setVariable("profilePic", "https://www.wbrc.com/resizer/ZBOPYrOOggKobpvrrIrfClObKaI=/1400x0/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/BV7IA24BUZBBRCKTJE5XP6KPPQ.jpg");
+                $postTemplate->setVariable("profilePic", $functions->getUserProfilePicture($row['UserID']));
 
                 $postTemplate->setVariable("postContent", $row['Content']);
                 $postTemplate->setVariable("postDate", $functions->getDateFormat($row['Date']));

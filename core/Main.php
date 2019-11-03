@@ -64,7 +64,7 @@ class Main
         // Set Template Arguments
         $navbarTemplate->setVariable("userFirstName", $currentUser['FirstName']);
         $navbarTemplate->setVariable("currentUserID", $currentUser['UserID']);
-        $navbarTemplate->setVariable("userProfilePicture", "https://www.wbrc.com/resizer/ZBOPYrOOggKobpvrrIrfClObKaI=/1400x0/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/BV7IA24BUZBBRCKTJE5XP6KPPQ.jpg");
+        $navbarTemplate->setVariable("userProfilePicture", $this->functions->getUserProfilePicture(currentUser['UserID']));
 
         $this->template->appendVariable("navbar", $navbarTemplate->getTemplate());
         $this->template->appendVariable("scripts", '<script src="js/nazzer/navbarContent.js" type="module"></script>');

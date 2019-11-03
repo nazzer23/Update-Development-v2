@@ -6,10 +6,49 @@
 import {Log} from './modules/logger.js';
 import {Main} from './init.js';
 import {apiUrl, loginUrl} from './config.api.js';
+import {sessionCheck} from "./config.api.js";
 
 function init() {
     Main();
     Log("LoginHandler is alive.");
+
+    if (localStorage.getItem("token") !== null) {
+        const token = localStorage.getItem("token");
+        const userID = localStorage.getItem("userID");
+        $.ajax({
+            url: apiUrl + sessionCheck,
+            method: "POST",
+            context: this,
+            dataType: "json",
+            data: {
+                session: token,
+                userID: userID
+            },
+            success: function (data) {
+                if (data.status) {
+                    $.ajax({
+                        url: "/gateway.php",
+                        method: "POST",
+                        context: this,
+                        dataType: "json",
+                        data: {
+                            mode: "jsLogin",
+                            userID: localStorage.getItem("userID"),
+                            token: localStorage.getItem("token")
+                        },
+                        success: (data) => {
+                            if (data.valid) {
+                                window.location = "/";
+                            }
+                        }
+                    });
+                } else {
+                    localStorage.clear();
+                    window.location = "/login.php";
+                }
+            }
+        });
+    }
 }
 
 function onLoginPress(e) {

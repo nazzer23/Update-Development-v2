@@ -73,6 +73,10 @@ class Functions
         }
     }
 
+    public function getUserProfilePicture($userID) {
+        return "https://www.wbrc.com/resizer/ZBOPYrOOggKobpvrrIrfClObKaI=/1400x0/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/BV7IA24BUZBBRCKTJE5XP6KPPQ.jpg";
+    }
+
     public function getDateFormat($date) {
         $databaseTime = strtotime($date);
         return date("l jS F Y g:ia", $databaseTime);

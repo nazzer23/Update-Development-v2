@@ -22,8 +22,6 @@ export function checkIfSessionValid() {
             success: function (data) {
                 if (data.status) {
                     Log("Token is valid.");
-
-                    // Update PHP Session on WebServer
                 } else {
                     localStorage.clear();
                     window.location = "/login.php";
