@@ -13,6 +13,8 @@ $page->setVariable("siteName", Configuration::siteName);
 $mainTemplate->setVariable("pageName", "Login");
 $mainTemplate->appendVariable("scripts", '<script src="js/nazzer/login.js" type="module"></script>');
 $mainTemplate->appendVariable("scripts", '<link href="css/signin.css" rel="stylesheet"/>');
+$header = new TemplateHandler("template.header");
+$mainTemplate->setVariable("navbar", $header->getTemplate());
 $mainTemplate->setVariable("content", $page->getTemplate());
 
 $mainTemplate->render();
