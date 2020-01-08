@@ -1,9 +1,6 @@
 export let apiUrl = "http://dev-api.updatesocial.co.uk/";
 export let webSocketUrl = "ws://localhost:3020";
 
-// WebSocket
-export let userAuthenticated = false;
-
 export let sessionCheck = "user/session/checkSession.php";
 export let loginUrl = "user/login.php";
 export let getNotifications = "user/notifications.php";

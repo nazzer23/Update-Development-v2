@@ -6,7 +6,7 @@
 import {Log} from './modules/logger.js';
 import {Main} from './init.js';
 
-import {} from './websocketConnect.js';
+let websocket = require('./websocketConnect.js');
 
 import {apiUrl, getNotifications} from './config.api.js';
 
@@ -17,7 +17,7 @@ function init() {
 }
 
 function checkNotifications() {
-    
+    websocket.sendWebsocketMsg("getNotifications");
 }
 
 
