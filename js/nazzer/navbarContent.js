@@ -17,7 +17,7 @@ function init() {
 }
 
 function checkNotifications() {
-    websocket.waitForAuthentication(() => {
+    websocket.waitForAuthentication(function() {
         let req = {
             "cmd": "getNotifications"
         }

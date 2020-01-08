@@ -60,7 +60,7 @@ export function sendWebsocketMsg(msg) {
 
 export function waitForAuthentication(callback) {
     setTimeout(
-        () => {
+        function () {
             if(authenticated) {
                 if(callback != null) {
                     callback();
