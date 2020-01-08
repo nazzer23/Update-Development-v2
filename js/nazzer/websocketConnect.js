@@ -26,7 +26,7 @@ ws.onmessage = e => {
                     "token": localStorage.getItem("token")
                 }
             };
-            sendWebsocketMsg(JSON.parse(resp))
+            ws.send(JSON.parse(resp))
             break;
         case "auth":
             if (socketData.success) {
