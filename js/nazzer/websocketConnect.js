@@ -69,7 +69,7 @@ export function waitForAuthentication(callback) {
                 }
             }
         },
-        5
+        500
     )
 }
 
@@ -84,6 +84,6 @@ function waitForSocketConnection(socket, callback) {
                 waitForSocketConnection(socket, callback);
             }
 
-        }, 5); // wait 5 milisecond for the connection...
+        }, 10); // wait 5 milisecond for the connection...
 }
 
