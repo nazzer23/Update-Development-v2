@@ -10,6 +10,6 @@ ws.onerror = error => {
     console.log(`WebSocket error: ${error}`)
 }
 
-connection.onmessage = e => {
+ws.onmessage = e => {
     console.log(e.data)
 }

@@ -5,6 +5,9 @@
 
 import {Log} from './modules/logger.js';
 import {Main} from './init.js';
+
+import {} from './websocketConnect.js';
+
 import {apiUrl, getNotifications} from './config.api.js';
 
 function init() {
@@ -13,6 +16,12 @@ function init() {
     checkNotifications();
 }
 
+function checkNotifications() {
+
+}
+
+
+/*
 function checkNotifications() {
     $.ajax({
         url: apiUrl + getNotifications,
@@ -30,9 +39,9 @@ function checkNotifications() {
             $("#notifCount").text(notifCount);
         }
     });
-}
+}*/
 
 // Event Handlers
 window.onload = () => init();
 
-setInterval(() => checkNotifications(), 5000);
+//setInterval(() => checkNotifications(), 5000);
