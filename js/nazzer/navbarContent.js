@@ -17,7 +17,7 @@ function init() {
 }
 
 function checkNotifications() {
-
+    
 }
 
 
