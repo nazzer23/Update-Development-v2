@@ -33,6 +33,7 @@ ws.onmessage = e => {
         case "auth":
             if (socketData.success) {
                 authenticated = true;
+                console.log("Success")
             } else {
                 authenticated = false;
                 // TODO: Logout
