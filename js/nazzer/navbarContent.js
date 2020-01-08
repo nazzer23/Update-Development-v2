@@ -17,7 +17,10 @@ function init() {
 }
 
 function checkNotifications() {
-    websocket.sendWebsocketMsg("getNotifications");
+    let req = {
+        "cmd": "getNotifications"
+    }
+    websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
 
