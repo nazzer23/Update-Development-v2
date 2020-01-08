@@ -6,7 +6,7 @@
 import {Log} from './modules/logger.js';
 import {Main} from './init.js';
 
-import * as websocket from ('./websocketConnect.js');
+import * as websocket from './websocketConnect.js';
 
 import {apiUrl, getNotifications} from './config.api.js';
 
