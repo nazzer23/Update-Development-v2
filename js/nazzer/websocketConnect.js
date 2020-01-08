@@ -26,7 +26,7 @@ ws.onmessage = e => {
                     "token" : localStorage.getItem("token")
                 }
             };
-            e.send(JSON.stringify(resp));
+            ws.send(JSON.stringify(resp));
     }
 
 }
