@@ -13,7 +13,9 @@ ws.onerror = error => {
 ws.onmessage = e => {
     console.log(e.data)
 
-    let socketData = e.data;
+    let socketData = JSON.parse(e.data);
+
+    console.log(socketData.cmd);
 
     switch(socketData.cmd) {
         case "sessionRequest":
