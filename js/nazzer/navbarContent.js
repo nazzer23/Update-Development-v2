@@ -17,10 +17,12 @@ function init() {
 }
 
 function checkNotifications() {
-    let req = {
-        "cmd": "getNotifications"
-    }
-    websocket.sendWebsocketMsg(JSON.stringify(req));
+    websocket.waitForAuthentication(() => {
+        let req = {
+            "cmd": "getNotifications"
+        }
+        websocket.sendWebsocketMsg(JSON.stringify(req));
+    });
 }
 
 

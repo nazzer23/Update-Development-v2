@@ -57,6 +57,19 @@ export function sendWebsocketMsg(msg) {
     });
 }
 
+export function waitForAuthentication(callback) {
+    setTimeout(
+        () => {
+            if(authenticated) {
+                if(callback != null) {
+                    callback();
+                }
+            }
+        },
+        5
+    )
+}
+
 function waitForSocketConnection(socket, callback) {
     setTimeout(
         function () {
