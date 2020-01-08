@@ -61,7 +61,9 @@ export function sendWebsocketMsg(msg) {
 export function waitForAuthentication(callback) {
     setTimeout(
         function () {
+            console.log("Checking authentication");
             if(authenticated) {
+                console.log(callback)
                 if(callback != null) {
                     callback();
                 }
