@@ -1,4 +1,4 @@
-import { webSocketUrl } from './config.api.js';
+import { webSocketUrl, userAuthenticated } from './config.api.js';
 
 var ws = new WebSocket(webSocketUrl);
 
@@ -27,6 +27,17 @@ ws.onmessage = e => {
                 }
             };
             ws.send(JSON.stringify(resp));
+            break;
+        case "auth":
+            if(socketData.success) {
+                userAuthenticated = true;
+                console.log(userAuthenticated)
+            } else {
+                // TODO: Logout
+
+                //localStorage.removeItem("userID");
+                //localStorage.removeItem("token");
+            }
     }
 
 }
