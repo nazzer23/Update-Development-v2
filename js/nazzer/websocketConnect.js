@@ -2,6 +2,8 @@ import { webSocketUrl } from './config.api.js';
 
 var ws = new WebSocket(webSocketUrl);
 
+export let authenticated = false;
+
 ws.onopen = () => {
     console.log("Connected");
 }
@@ -30,9 +32,9 @@ ws.onmessage = e => {
             break;
         case "auth":
             if (socketData.success) {
-                this.authenticated = true;
+                authenticated = true;
             } else {
-                this.authenticated = false;
+                authenticated = false;
                 // TODO: Logout
 
                 //localStorage.removeItem("userID");
@@ -40,7 +42,7 @@ ws.onmessage = e => {
             }
             break;
         case "updateNotifications":
-            const {notifCount, msgCount, friendCount} = socketData.data;
+            const { notifCount, msgCount, friendCount } = socketData.data;
 
             $("#requestCount").text(friendCount);
             $("#messageCount").text(msgCount);
@@ -49,17 +51,17 @@ ws.onmessage = e => {
     }
 }
 
-export function sendWebsocketMsg (msg) {
-    waitForSocketConnection(ws, function(){
+export function sendWebsocketMsg(msg) {
+    waitForSocketConnection(ws, function () {
         ws.send(msg);
     });
 }
 
-function waitForSocketConnection(socket, callback){
+function waitForSocketConnection(socket, callback) {
     setTimeout(
         function () {
             if (socket.readyState === 1) {
-                if (callback != null){
+                if (callback != null) {
                     callback();
                 }
             } else {
