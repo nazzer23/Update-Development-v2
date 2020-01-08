@@ -12,4 +12,19 @@ ws.onerror = error => {
 
 ws.onmessage = e => {
     console.log(e.data)
+
+    let socketData = e.data;
+
+    switch(socketData.cmd) {
+        case "sessionRequest":
+            let resp = {
+                "cmd": "authUser",
+                "data": {
+                    "userid" : localStorage.getItem("userID"),
+                    "token" : localStorage.getItem("token")
+                }
+            };
+            e.send(JSON.stringify(resp));
+    }
+
 }
