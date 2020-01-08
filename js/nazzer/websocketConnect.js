@@ -26,7 +26,7 @@ ws.onmessage = e => {
                     "token": localStorage.getItem("token")
                 }
             };
-            ws.send(JSON.parse(resp))
+            ws.send(JSON.stringify(resp))
             break;
         case "auth":
             if (socketData.success) {
@@ -59,12 +59,10 @@ function waitForSocketConnection(socket, callback){
     setTimeout(
         function () {
             if (socket.readyState === 1) {
-                console.log("Connection is made")
                 if (callback != null){
                     callback();
                 }
             } else {
-                console.log("wait for connection...")
                 waitForSocketConnection(socket, callback);
             }
 
