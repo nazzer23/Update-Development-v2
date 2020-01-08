@@ -74,7 +74,7 @@ class Functions
     }
 
     public function getUserProfilePicture($userID) {
-        return "https://www.wbrc.com/resizer/ZBOPYrOOggKobpvrrIrfClObKaI=/1400x0/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/BV7IA24BUZBBRCKTJE5XP6KPPQ.jpg";
+        return "https://dummyimage.com/800x800";
     }
 
     public function getDateFormat($date) {

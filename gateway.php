@@ -55,21 +55,31 @@ function constructPost() {
     global $main, $database, $functions;
     if(isset($_POST['userID']) && isset($_POST['token'])) {
         if($functions->VerifyUserSessionOnToken($_POST['userID'], $_POST['token'])) {
-            $postID = $_POST['postID'];
-
             $queryRaw = "SELECT users_posts.*, users.FirstName, users.LastName FROM users_posts INNER JOIN users ON users_posts.UserID = users.UserID WHERE users_posts.PostID='{$_POST['postID']}' ORDER BY PostID DESC";
 
             $query = $database->executeQuery($queryRaw);
             while($row = $query->fetch_array()) {
-                $postTemplate = new TemplateHandler("template.post");
-                $postTemplate->setVariable("profileNameFirst", $row['FirstName']);
-                $postTemplate->setVariable("profileNameLast", $row['LastName']);
-                $postTemplate->setVariable("profileID", $row['UserID']);
-                $postTemplate->setVariable("profilePic", $functions->getUserProfilePicture($row['UserID']));
+                // Desktop
+                $desktopTemplate = new TemplateHandler("components/posts/template.post.desktop");
+                $desktopTemplate->setVariable("profileNameFirst", $row['FirstName']);
+                $desktopTemplate->setVariable("profileNameLast", $row['LastName']);
+                $desktopTemplate->setVariable("profileID", $row['UserID']);
+                $desktopTemplate->setVariable("profilePic", $functions->getUserProfilePicture($row['UserID']));
 
-                $postTemplate->setVariable("postContent", $row['Content']);
-                $postTemplate->setVariable("postDate", $functions->getDateFormat($row['Date']));
-                echo $postTemplate->getTemplate();
+                $desktopTemplate->setVariable("postContent", $row['Content']);
+                $desktopTemplate->setVariable("postDate", $functions->getDateFormat($row['Date']));
+                echo $desktopTemplate->getTemplate();
+
+                // Mobile
+                $mobileTemplate = new TemplateHandler("components/posts/template.post.mobile");
+                $mobileTemplate->setVariable("profileNameFirst", $row['FirstName']);
+                $mobileTemplate->setVariable("profileNameLast", $row['LastName']);
+                $mobileTemplate->setVariable("profileID", $row['UserID']);
+                $mobileTemplate->setVariable("profilePic", $functions->getUserProfilePicture($row['UserID']));
+
+                $mobileTemplate->setVariable("postContent", $row['Content']);
+                $mobileTemplate->setVariable("postDate", $functions->getDateFormat($row['Date']));
+                echo $mobileTemplate->getTemplate();
             }
 
         } else {

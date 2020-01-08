@@ -17,7 +17,7 @@ class TemplateHandler
             $file = file_get_contents($file);
             return $file;
         } else {
-            return $this->getFile("site.404");
+            return $this->getFile("pages/site.404");
             //die("The file that was requested ({$file}) cannot be loaded. Please try again later or contact the site administrator.");
         }
     }

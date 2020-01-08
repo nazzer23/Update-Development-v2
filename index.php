@@ -5,7 +5,7 @@ $mainTemplate = $main->template;
 $database = $main->db;
 $functions = $main->functions;
 
-$themeFile = "site.home";
+$themeFile = "pages/site.home";
 
 $page = new TemplateHandler($themeFile);
 $page->setVariable("siteName", Configuration::siteName);

@@ -59,12 +59,12 @@ class Main
     private function initiateUserNavbar()
     {
         $currentUser = $this->functions->getUserDataForCurrentUser();
-        $navbarTemplate = new TemplateHandler("site.navbar");
+        $navbarTemplate = new TemplateHandler("components/template.navbar");
 
         // Set Template Arguments
         $navbarTemplate->setVariable("userFirstName", $currentUser['FirstName']);
         $navbarTemplate->setVariable("currentUserID", $currentUser['UserID']);
-        $navbarTemplate->setVariable("userProfilePicture", $this->functions->getUserProfilePicture(currentUser['UserID']));
+        $navbarTemplate->setVariable("userProfilePicture", $this->functions->getUserProfilePicture($currentUser['UserID']));
 
         $this->template->appendVariable("navbar", $navbarTemplate->getTemplate());
         $this->template->appendVariable("scripts", '<script src="js/nazzer/navbarContent.js" type="module"></script>');
