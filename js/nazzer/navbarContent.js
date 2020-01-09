@@ -22,7 +22,7 @@ function checkNotifications() {
     websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
-websocket.ws.onmessage("message", function(event) {
+websocket.ws.onmessage(function(event) {
     let data = JSON.parse(event.data);
 
     console.log(data)
