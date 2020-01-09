@@ -7,6 +7,10 @@ ws.onopen = () => {
     console.log("Connected");
 }
 
+window.onclose = () => {
+    ws.close();
+};
+
 ws.onerror = error => {
     console.log(`WebSocket error: ${error}`)
 }
