@@ -1,7 +1,6 @@
 import { webSocketUrl } from './config.api.js';
 
-var ws = new WebSocket(webSocketUrl);
-
+export var ws = new WebSocket(webSocketUrl);
 export let authenticated = false;
 
 ws.onopen = () => {
