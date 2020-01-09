@@ -22,11 +22,11 @@ function checkNotifications() {
     websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
-websocket.addEventHandler("message", function(event)) {
+websocket.addEventHandler("message", function(event) {
     if(websocket.authenticated) {
         checkNotifications();
     }
-}
+});
 
 /*
 function checkNotifications() {
