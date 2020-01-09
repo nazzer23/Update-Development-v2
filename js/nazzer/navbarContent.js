@@ -22,7 +22,7 @@ function checkNotifications() {
     websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
-websocket.ws.onmessage = e => {
+websocket.ws.addEventListener("message", (e) => {
     let data = JSON.parse(e.data);
 
     console.log(data)
@@ -33,7 +33,7 @@ websocket.ws.onmessage = e => {
                 checkNotifications();
             }
     }
-};
+});
 
 /*
 function checkNotifications() {
