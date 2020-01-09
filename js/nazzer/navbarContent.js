@@ -33,7 +33,7 @@ websocket.ws.onmessage = e => {
                 checkNotifications();
             }
     }
-});
+};
 
 /*
 function checkNotifications() {
