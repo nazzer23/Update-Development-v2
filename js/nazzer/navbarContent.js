@@ -22,7 +22,7 @@ function checkNotifications() {
     websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
-websocket.ws.addEventHandler("message", function(event) {
+websocket.ws.onmessage("message", function(event) {
     if(websocket.authenticated) {
         checkNotifications();
     }
