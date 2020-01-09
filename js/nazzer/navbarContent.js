@@ -22,8 +22,8 @@ function checkNotifications() {
     websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
-websocket.ws.onmessage(function(event) {
-    let data = JSON.parse(event.data);
+websocket.ws.onmessage = e => {
+    let data = JSON.parse(e.data);
 
     console.log(data)
 
