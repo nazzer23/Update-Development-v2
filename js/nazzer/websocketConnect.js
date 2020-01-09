@@ -14,6 +14,10 @@ ws.onerror = error => {
 ws.onmessage = e => {
     console.log(e.data)
 
+    if(e.data === "undefined") {
+        return;
+    }
+
     let socketData = JSON.parse(e.data);
 
     console.log(socketData.cmd);

@@ -23,8 +23,13 @@ function checkNotifications() {
 }
 
 websocket.ws.onmessage("message", function(event) {
-    if(websocket.authenticated) {
-        checkNotifications();
+    let data = JSON.parse(event.data);
+
+    switch(data.cmd) {
+        case "auth":
+            if(data.success) {
+                checkNotifications();
+            }
     }
 });
 
