@@ -14,7 +14,7 @@ ws.onerror = error => {
 ws.onmessage = e => {
     console.log(e.data)
 
-    if(e.data === "undefined") {
+    if(typeof e.data === "undefined") {
         return;
     }
 
