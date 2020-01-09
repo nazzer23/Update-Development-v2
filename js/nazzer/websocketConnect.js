@@ -14,7 +14,7 @@ ws.onerror = error => {
 ws.onmessage = e => {
     console.log(e.data)
 
-    if(typeof e.data === "undefined") {
+    if (typeof e.data === "undefined") {
         return;
     }
 
@@ -59,19 +59,6 @@ export function sendWebsocketMsg(msg) {
     waitForSocketConnection(ws, function () {
         ws.send(msg);
     });
-}
-
-export function waitForAuthentication(callback) {
-    setTimeout(
-        function () {
-            if(authenticated) {
-                if(callback != null) {
-                    callback();
-                }
-            }
-        },
-        500
-    )
 }
 
 function waitForSocketConnection(socket, callback) {

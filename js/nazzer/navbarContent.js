@@ -27,9 +27,9 @@ websocket.ws.addEventListener("message", (e) => {
 
     console.log(data)
 
-    switch(data.cmd) {
+    switch (data.cmd) {
         case "auth":
-            if(data.success) {
+            if (data.success) {
                 checkNotifications();
             }
     }

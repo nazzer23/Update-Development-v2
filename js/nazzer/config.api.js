@@ -1,5 +1,5 @@
 export let apiUrl = "http://dev-api.updatesocial.co.uk/";
-export let webSocketUrl = "ws://localhost:3020";
+export let webSocketUrl = "ws://updatesocial.co.uk:3020";
 
 export let sessionCheck = "user/session/checkSession.php";
 export let loginUrl = "user/login.php";
