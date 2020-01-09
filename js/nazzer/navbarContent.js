@@ -3,28 +3,30 @@
  * Written by Ben Vernazza
  */
 
-import {Log} from './modules/logger.js';
-import {Main} from './init.js';
+import { Log } from './modules/logger.js';
+import { Main } from './init.js';
 
 import * as websocket from './websocketConnect.js';
 
-import {apiUrl, getNotifications} from './config.api.js';
+import { apiUrl, getNotifications } from './config.api.js';
 
 function init() {
     Main();
     Log("NavbarContent is alive.");
-    checkNotifications();
 }
 
 function checkNotifications() {
-    websocket.waitForAuthentication(function() {
-        let req = {
-            "cmd": "getNotifications"
-        }
-        websocket.sendWebsocketMsg(JSON.stringify(req));
-    });
+    let req = {
+        "cmd": "getNotifications"
+    }
+    websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
+websocket.addEventHandler("message", function(event)) {
+    if(websocket.authenticated) {
+        checkNotifications();
+    }
+}
 
 /*
 function checkNotifications() {
