@@ -1,22 +1,22 @@
-import { webSocketUrl } from './config.api.js';
+import { webSocketUrl } from "./config.api.js";
 
 export var ws = new WebSocket(webSocketUrl);
 export let authenticated = false;
 
 ws.onopen = () => {
     console.log("Connected");
-}
+};
 
 window.onclose = () => {
     ws.close();
 };
 
 ws.onerror = error => {
-    console.log(`WebSocket error: ${error}`)
-}
+    console.log(`WebSocket error: ${error}`);
+};
 
 ws.onmessage = e => {
-    console.log(e.data)
+    console.log(e.data);
 
     if (typeof e.data === "undefined") {
         return;
@@ -29,18 +29,18 @@ ws.onmessage = e => {
     switch (socketData.cmd) {
         case "sessionRequest":
             let resp = {
-                "cmd": "authUser",
-                "data": {
-                    "userid": localStorage.getItem("userID"),
-                    "token": localStorage.getItem("token")
+                cmd: "authUser",
+                data: {
+                    userid: localStorage.getItem("userID"),
+                    token: localStorage.getItem("token")
                 }
             };
-            ws.send(JSON.stringify(resp))
+            ws.send(JSON.stringify(resp));
             break;
         case "auth":
             if (socketData.success) {
                 authenticated = true;
-                console.log("Success")
+                console.log("Success");
             } else {
                 authenticated = false;
                 // TODO: Logout
@@ -57,25 +57,22 @@ ws.onmessage = e => {
             $("#notifCount").text(notifCount);
             break;
     }
-}
+};
 
 export function sendWebsocketMsg(msg) {
-    waitForSocketConnection(ws, function () {
+    waitForSocketConnection(ws, function() {
         ws.send(msg);
     });
 }
 
 function waitForSocketConnection(socket, callback) {
-    setTimeout(
-        function () {
-            if (socket.readyState === 1) {
-                if (callback != null) {
-                    callback();
-                }
-            } else {
-                waitForSocketConnection(socket, callback);
+    setTimeout(function() {
+        if (socket.readyState === 1) {
+            if (callback != null) {
+                callback();
             }
-
-        }, 10); // wait 5 milisecond for the connection...
+        } else {
+            waitForSocketConnection(socket, callback);
+        }
+    }, 10);
 }
-

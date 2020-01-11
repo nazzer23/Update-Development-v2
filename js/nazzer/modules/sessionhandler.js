@@ -1,11 +1,11 @@
-import {Log} from './logger.js';
-import {apiUrl, sessionCheck} from '../config.api.js';
+import { Log } from "./logger.js";
+import { apiUrl, sessionCheck } from "../config.api.js";
 
 export function checkIfSessionValid() {
     Log("Checking if token is valid.");
 
     if (localStorage.getItem("token") == null) {
-        Log("Token isn't set.")
+        Log("Token isn't set.");
     } else {
         Log("Token is set. Validating...");
         const token = localStorage.getItem("token");
@@ -19,7 +19,7 @@ export function checkIfSessionValid() {
                 session: token,
                 userID: userID
             },
-            success: function (data) {
+            success: function(data) {
                 if (data.status) {
                     Log("Token is valid.");
                 } else {

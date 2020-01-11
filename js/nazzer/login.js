@@ -3,10 +3,10 @@
  * Written by Ben Vernazza
  */
 
-import {Log} from './modules/logger.js';
-import {Main} from './init.js';
-import {apiUrl, loginUrl} from './config.api.js';
-import {sessionCheck} from "./config.api.js";
+import { Log } from "./modules/logger.js";
+import { Main } from "./init.js";
+import { apiUrl, loginUrl } from "./config.api.js";
+import { sessionCheck } from "./config.api.js";
 
 function init() {
     Main();
@@ -24,7 +24,7 @@ function init() {
                 session: token,
                 userID: userID
             },
-            success: function (data) {
+            success: function(data) {
                 if (data.status) {
                     $.ajax({
                         url: "/gateway.php",
@@ -36,7 +36,7 @@ function init() {
                             userID: localStorage.getItem("userID"),
                             token: localStorage.getItem("token")
                         },
-                        success: (data) => {
+                        success: data => {
                             if (data.valid) {
                                 window.location = "/";
                             }
@@ -65,10 +65,10 @@ function onLoginPress(e) {
             method: "POST",
             context: this,
             dataType: "json",
-            data: {strEmail: email, strPassword: password},
-            success: function (data) {
+            data: { strEmail: email, strPassword: password },
+            success: function(data) {
                 if (data.status == true) {
-                    if (typeof (Storage) !== "undefined") {
+                    if (typeof Storage !== "undefined") {
                         localStorage.setItem("token", data.sessionString);
                         localStorage.setItem("userID", data.userID);
 
@@ -83,7 +83,7 @@ function onLoginPress(e) {
                                 userID: localStorage.getItem("userID"),
                                 token: localStorage.getItem("token")
                             },
-                            success: (data) => {
+                            success: data => {
                                 if (data.valid) {
                                     window.location = "/";
                                 } else {
@@ -107,9 +107,9 @@ function displayNotification(msg, type) {
 
     // Create a new Div Element
     let notifDiv = document.createElement("div");
-    notifDiv.className = 'alert alert-' + type;
+    notifDiv.className = "alert alert-" + type;
     notifDiv.innerText = msg;
-    var divID = "us_" + Math.floor((Math.random() * 3000) + 1000);
+    var divID = "us_" + Math.floor(Math.random() * 3000 + 1000);
     notifDiv.id = divID;
 
     notificationDiv.appendChild(notifDiv);
@@ -123,4 +123,4 @@ function displayNotification(msg, type) {
 
 // Event Handlers
 window.onload = () => init();
-document.getElementById("loginBtn").onclick = (e) => onLoginPress(e);
+document.getElementById("loginBtn").onclick = e => onLoginPress(e);

@@ -3,12 +3,12 @@
  * Written by Ben Vernazza
  */
 
-import { Log } from './modules/logger.js';
-import { Main } from './init.js';
+import { Log } from "./modules/logger.js";
+import { Main } from "./init.js";
 
-import * as websocket from './websocketConnect.js';
+import * as websocket from "./websocketConnect.js";
 
-import { apiUrl, getNotifications } from './config.api.js';
+import { apiUrl, getNotifications } from "./config.api.js";
 
 function init() {
     Main();
@@ -17,15 +17,15 @@ function init() {
 
 function checkNotifications() {
     let req = {
-        "cmd": "getNotifications"
-    }
+        cmd: "getNotifications"
+    };
     websocket.sendWebsocketMsg(JSON.stringify(req));
 }
 
-websocket.ws.addEventListener("message", (e) => {
+websocket.ws.addEventListener("message", e => {
     let data = JSON.parse(e.data);
 
-    console.log(data)
+    console.log(data);
 
     switch (data.cmd) {
         case "auth":
