@@ -21,7 +21,7 @@ ws.onmessage = e => {
     }
 
     let socketData = JSON.parse(e.data);
-    console.log(`From Server >> ${socketData}`);
+    console.log(socketData);
     switch (socketData.cmd) {
         case "sessionRequest":
             let resp = {
