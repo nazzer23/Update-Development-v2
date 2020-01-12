@@ -24,9 +24,6 @@ function checkNotifications() {
 
 websocket.ws.addEventListener("message", e => {
     let data = JSON.parse(e.data);
-
-    console.log(data);
-
     switch (data.cmd) {
         case "auth":
             if (data.success) {

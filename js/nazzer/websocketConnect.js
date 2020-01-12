@@ -16,16 +16,12 @@ ws.onerror = error => {
 };
 
 ws.onmessage = e => {
-    console.log(e.data);
-
     if (typeof e.data === "undefined") {
         return;
     }
 
     let socketData = JSON.parse(e.data);
-
-    console.log(socketData.cmd);
-
+    console.log(`From Server >> ${socketData}`);
     switch (socketData.cmd) {
         case "sessionRequest":
             let resp = {
