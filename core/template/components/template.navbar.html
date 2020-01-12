@@ -56,7 +56,6 @@
     </div>
 </nav> -->
 
-<!--
 <div class="header-dark">
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark navigation-clean-search">
         <div class="container">
@@ -103,60 +102,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-</div> -->
-
-<div class="header-dark">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <ul class="navbar-nav mr-auto">
-                <a class="navbar-brand mx-auto" href="/"><img src='/images/logo.png' style="max-height:35px" /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </ul>
-        </div>
-        <div class="mx-auto order-0">
-            <form action="/search.php" class="form-inline mr-2 mr-md-0 mb-0" method="GET">
-                <input aria-label="Search..." class="form-control mr-sm-2" name="searchData" placeholder="Search..."
-                    required type="text">
-                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/notifications.php?friends">
-                        <i class="fas fa-user"></i> <span class="badge badge-light" id="requestCount">0</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-envelope"></i> <span class="badge badge-light" id="messageCount">0</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/notifications.php">
-                        <i class="fas fa-globe"></i> <span class="badge badge-light" id="notifCount">0</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile.php?id={currentUserID}"><img
-                            class="rounded-circle img-fluid mr-1" src="{userProfilePicture}"
-                            style="max-width: 25px; max-height:25px; width:25px; height:25px;" />{userFirstName}</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                        data-toggle="dropdown" href="" id="dropdown03">
-                        <i class="fa fa-user-cog"></i>
-                    </a>
-                    <div aria-labelledby="dropdown03" class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Account Settings</a>
-                        <a class="dropdown-item" href="/logout.php">Logout</a>
-                    </div>
-                </li>
-            </ul>
         </div>
     </nav>
 </div>
